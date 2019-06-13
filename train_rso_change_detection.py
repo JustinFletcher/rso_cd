@@ -322,7 +322,7 @@ if __name__ == '__main__':
                         default=36,
                         help='Number of images in the testing set.')
 
-    tb_file = '{}_{}/'.format("rso_cd_", time.strftime('%Y%m%d%H%M'))
+    tb_file = '{}_{}/'.format("rso_cd", time.strftime('%Y%m%d%H%M'))
 
     parser.add_argument('--run_name', type=str,
                         default=tb_file,

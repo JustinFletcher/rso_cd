@@ -223,7 +223,7 @@ def main(_):
         metrics.append(custom_metrics.max_f1)
 
         # Create and append a default tensorbaord callback.
-        tensorboard = TensorBoard(log_dir='./tensorboard/' + FLAGS.run_name,
+        tensorboard = TensorBoard(log_dir=FLAGS.log_path + FLAGS.run_name,
                                   histogram_freq=0,
                                   write_graph=False)
         callbacks.append(tensorboard)
@@ -306,6 +306,10 @@ if __name__ == '__main__':
                         default="C:\\research\\rso_change_detection\\data\\tfrecords\\",
                         help='Path to the training TFRecord file.')
 
+    parser.add_argument('--log_path', type=str,
+                        default="C:\\research\\log\\",
+                        help='Path to the training TFRecord file.')
+
     parser.add_argument('--num_train_images', type=int,
                         default=(4096 * 4),
                         help='Number of images in the training set.')
@@ -322,7 +326,7 @@ if __name__ == '__main__':
 
     parser.add_argument('--run_name', type=str,
                         default=tb_file,
-                        help='The name of this run, to be used on the weights file and tensorboard logs.')
+                        help='The name of this run.')
 
     parser.add_argument('--base_model_name', type=str,
                         default="DarkNet",

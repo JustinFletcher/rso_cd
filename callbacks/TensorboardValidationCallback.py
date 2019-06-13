@@ -299,7 +299,7 @@ class TensorboardValidationCallback(Callback):
             def sigmoid(x):
                 return 1 / (1 + np.exp(-x))
 
-            confidence_list = sigmoid(np.linspace(-10, 10, 100))
+            confidence_list = sigmoid(np.linspace(-100, 100, 98))
             confidence_list = np.concatenate([[0.0], confidence_list, [1.0]],
                                              axis=0)
             analysis = self.analyzer(truth_labels,
@@ -336,7 +336,7 @@ class TensorboardValidationCallback(Callback):
                 # print("----------------------------------------------------")
 
                 pr_summary = summary_lib.pr_curve_raw_data_pb(
-                    name="PR Curve (Class = " + class_key,
+                    name="PR Curve (Class = " + class_key + ")",
                     true_positive_counts=tp,
                     false_positive_counts=fp,
                     true_negative_counts=tn,

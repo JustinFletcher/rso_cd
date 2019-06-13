@@ -299,7 +299,7 @@ class TensorboardValidationCallback(Callback):
             def sigmoid(x):
                 return 1 / (1 + np.exp(-x))
 
-            confidence_list = sigmoid(np.linspace(-100, 100, 98))
+            confidence_list = sigmoid(np.linspace(-10, 10, 1000))
             confidence_list = np.concatenate([[0.0], confidence_list, [1.0]],
                                              axis=0)
             analysis = self.analyzer(truth_labels,

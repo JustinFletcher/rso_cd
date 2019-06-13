@@ -109,12 +109,12 @@ def main(_):
     os.environ["CUDA_VISIBLE_DEVICES"] = FLAGS.gpu_list
 
 
-    train_tfrecord_list = ["C:\\research\\rso_change_detection\\data\\tfrecords\\rso_change_detection_0.tfrecords",
-                           "C:\\research\\rso_change_detection\\data\\tfrecords\\rso_change_detection_1.tfrecords",
-                           "C:\\research\\rso_change_detection\\data\\tfrecords\\rso_change_detection_2.tfrecords",
-                           "C:\\research\\rso_change_detection\\data\\tfrecords\\rso_change_detection_3.tfrecords"]
+    train_tfrecord_list = [FLAGS.dataset_path + "rso_change_detection_0.tfrecords",
+                           FLAGS.dataset_path + "rso_change_detection_1.tfrecords",
+                           FLAGS.dataset_path + "rso_change_detection_2.tfrecords",
+                           FLAGS.dataset_path + "rso_change_detection_3.tfrecords"]
 
-    valid_tfrecord_list = ["C:\\research\\rso_change_detection\\data\\tfrecords\\rso_change_detection_4.tfrecords"]
+    valid_tfrecord_list = [FLAGS.dataset_path + "rso_change_detection_4.tfrecords"]
 
     train_generator = DatasetGenerator(train_tfrecord_list,
                                        num_images=FLAGS.num_train_images,
@@ -300,6 +300,11 @@ if __name__ == '__main__':
     #                     default=os.path.join(dataset_path,
     #                                          "tiny_test_rn_16mc.tfrecords"),
     #                     help='Path to the testing TFRecord file.')
+
+
+    parser.add_argument('--dataset_path', type=str,
+                        default="C:\\research\\rso_change_detection\\data\\tfrecords\\",
+                        help='Path to the training TFRecord file.')
 
     parser.add_argument('--num_train_images', type=int,
                         default=(4096 * 4),
